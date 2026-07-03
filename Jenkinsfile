@@ -1,35 +1,29 @@
-pipeline {https://github.com/Aashritha2810/health_care/security
+pipeline {
     agent any
-
+    tools {
+        maven 'Maven3'
+        jdk 'JDK17'
+    }
     stages {
-
         stage('Checkout') {
             steps {
                 checkout scm
             }
         }
-
-        stage('Install Dependencies') {
+        stage('Build') {
             steps {
-                bat 'py -m pip install -r requirements.txt'
+                bat 'mvn clean package'
             }
         }
-
-        stage('Run Application Check') {
+        stage('Archive WAR') {
             steps {
-                bat 'py app.py --help'
+                archiveArtifacts artifacts: 'target/*.war', fingerprint: true
             }
         }
-
-    }
-
-    post {
-        success {
-            echo 'Healthcare project built successfully!'
-        }
-
-        failure {
-            echo 'Build failed!'
+        stage('Deploy to Tomcat') {
+            steps {
+                bat 'copy target\\health_care.war "C:\\Users\\markh\\Downloads\\apache-tomcat-10.1.54-windows-x64\\apache-tomcat-10.1.54\\webapps\\"'
+            }
         }
     }
 }
