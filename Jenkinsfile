@@ -1,4 +1,4 @@
-pipeline {
+pipeline {https://github.com/Aashritha2810/health_care/security
     agent any
 
     stages {
@@ -11,13 +11,13 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'python -m pip install -r requirements.txt'
+                bat 'py -m pip install -r requirements.txt'
             }
         }
 
         stage('Run Application Check') {
             steps {
-                bat 'python app.py --help'
+                bat 'py app.py --help'
             }
         }
 
