@@ -144,7 +144,7 @@
 
 <!-- Navbar -->
 <div class="navbar">
-    <h1>🏥 HealthCare FOR ALLLL</h1>
+    <h1>🏥 HealthCare FOR ALLLL, EXCEPT MY NANI</h1>
     <div>
         <a href="#">Home</a>
         <a href="#">Doctors</a>
